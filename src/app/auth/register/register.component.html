@@ -1,0 +1,134 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="brand-header">
+      <h2>Create Account</h2>
+      <p class="subtitle">Fill in your details to get started</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="fullName"
+            formControlName="fullName"
+            class="form-control"
+            placeholder="Enter your full name"
+            [ngClass]="{ 'is-invalid': submitted && f['fullName'].errors }"
+          />
+        </div>
+        <div *ngIf="submitted && f['fullName'].errors" class="invalid-feedback">
+          <div *ngIf="f['fullName'].errors['required']">
+            Full name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-wrapper">
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            placeholder="Enter your email"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+          />
+        </div>
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">Email is required</div>
+          <div *ngIf="f['email'].errors['email']">
+            Please enter a valid email address
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            placeholder="Create a password"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+          />
+        </div>
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+          <div *ngIf="f['password'].errors['required']">
+            Password is required
+          </div>
+          <div *ngIf="f['password'].errors['minlength']">
+            Password must be at least 6 characters
+          </div>
+          <div *ngIf="f['password'].errors['pattern']">
+            Password must contain at least one uppercase letter, one lowercase
+            letter, and one number
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="input-wrapper">
+          <input
+            type="password"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            class="form-control"
+            placeholder="Confirm your password"
+            [ngClass]="{
+              'is-invalid': submitted && f['confirmPassword'].errors,
+            }"
+          />
+        </div>
+        <div
+          *ngIf="submitted && f['confirmPassword'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['confirmPassword'].errors['required']">
+            Password confirmation is required
+          </div>
+          <div *ngIf="f['confirmPassword'].errors['matching']">
+            Passwords must match
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="terms-checkbox">
+          <input
+            type="checkbox"
+            id="terms"
+            formControlName="terms"
+            [ngClass]="{ 'is-invalid': submitted && f['terms'].errors }"
+          />
+          <label for="terms">
+            I agree to the
+            <a href="/terms" [routerLink]="['/terms']">Terms of Service</a> and
+            <a href="/privacy" [routerLink]="['/privacy']">Privacy Policy</a>
+          </label>
+        </div>
+        <div *ngIf="submitted && f['terms'].errors" class="invalid-feedback">
+          <div *ngIf="f['terms'].errors['required']">
+            You must accept the terms and conditions
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn-register">Create Account</button>
+      </div>
+
+      <div class="login-prompt">
+        <span>Already have an account?</span>
+        <a href="/login" class="login-link" [routerLink]="['/login']"
+          >Sign In</a
+        >
+      </div>
+    </form>
+  </div>
+</div>

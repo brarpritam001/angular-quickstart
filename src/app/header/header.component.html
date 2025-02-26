@@ -1,0 +1,62 @@
+<nav class="navbar">
+  <!-- Left section -->
+  <div class="left">
+    <a href="#" class="logo">Logo</a>
+  </div>
+
+  <!-- Center section -->
+  <div class="center">
+    <input type="text" class="search-bar" placeholder="Search..." />
+  </div>
+
+  <!-- Right section -->
+  <div class="right">
+    <!-- Full screen button -->
+    <button
+      class="icon-button"
+      title="Full Screen"
+      (click)="toggleFullScreen()"
+    >
+      🖥️
+    </button>
+
+    <!-- Language selector -->
+    <select class="language-selector">
+      <option value="en">English</option>
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
+    </select>
+
+    <!-- Notifications -->
+    <div class="icon-container">
+      <button class="icon-button" title="Notifications">
+        🔔
+        <span class="notification-dot"></span>
+      </button>
+      <div class="tooltip">
+        <h4>Notifications</h4>
+        <p>You have 3 unread notifications</p>
+        <ul>
+          <li>📝 New team message from Sarah</li>
+          <li>📊 Project status update</li>
+          <li>📅 Meeting reminder: Team Sync</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="icon-container">
+      <button class="icon-button" title="Profile">👤</button>
+      <div class="tooltip">
+        <h4>User Profile</h4>
+        <div class="profile-details">
+          <p>John Doe</p>
+          <p>john.doeexample.com</p>
+          <a href="#">View Profile</a>
+          <a href="#">Account Settings</a>
+          <a href="#" style="color: brown">Sign Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
