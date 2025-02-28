@@ -1,7 +1,8 @@
-<nav class="navbar">
+<div class="navbar">
   <!-- Left section -->
   <div class="left">
-    <a href="#" class="logo">Logo</a>
+    <a href="#" class="nav-link">Home</a>
+    <a href="#" class="nav-link">About</a>
   </div>
 
   <!-- Center section -->
@@ -11,52 +12,58 @@
 
   <!-- Right section -->
   <div class="right">
-    <!-- Full screen button -->
-    <button
-      class="icon-button"
-      title="Full Screen"
-      (click)="toggleFullScreen()"
-    >
-      🖥️
-    </button>
-
-    <!-- Language selector -->
     <select class="language-selector">
       <option value="en">English</option>
       <option value="es">Spanish</option>
       <option value="fr">French</option>
     </select>
 
-    <!-- Notifications -->
-    <div class="icon-container">
-      <button class="icon-button" title="Notifications">
-        🔔
-        <span class="notification-dot"></span>
-      </button>
-      <div class="tooltip">
-        <h4>Notifications</h4>
-        <p>You have 3 unread notifications</p>
-        <ul>
-          <li>📝 New team message from Sarah</li>
-          <li>📊 Project status update</li>
-          <li>📅 Meeting reminder: Team Sync</li>
-        </ul>
-      </div>
-    </div>
+    <button class="icon-button" title="Notifications">🔔</button>
 
-    <!-- Profile -->
-    <div class="icon-container">
-      <button class="icon-button" title="Profile">👤</button>
-      <div class="tooltip">
-        <h4>User Profile</h4>
-        <div class="profile-details">
-          <p>John Doe</p>
-          <p>john.doeexample.com</p>
-          <a href="#">View Profile</a>
-          <a href="#">Account Settings</a>
-          <a href="#" style="color: brown">Sign Out</a>
+    <!-- Profile Dropdown -->
+    <div
+      class="profile-container"
+      (mouseenter)="isProfileOpen = true"
+      (mouseleave)="isProfileOpen = false"
+    >
+      <button class="icon-button">👤</button>
+
+      <div class="dropdown-menu" *ngIf="isProfileOpen">
+        <div class="profile-card">
+          <!-- Profile Image -->
+          <div class="image-container">
+            <div class="profile-image">
+              <img [src]="profile.imageUrl" alt="Profile" />
+              <span class="status-dot"></span>
+            </div>
+          </div>
+
+          <!-- Profile Info -->
+          <div class="profile-info">
+            <h3>{{ profile.name }}</h3>
+            <p class="phone">{{ profile.phone }}</p>
+          </div>
+
+          <!-- Details -->
+          <div class="profile-details">
+            <div class="detail-item">
+              <span class="emoji">🎂</span>
+              <div class="detail-content">
+                <p class="label">Birthday</p>
+                <p class="value">{{ profile.birthday }}</p>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="emoji">⚥</span>
+              <div class="detail-content">
+                <p class="label">Gender</p>
+                <p class="value">{{ profile.gender }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</nav>
+</div>

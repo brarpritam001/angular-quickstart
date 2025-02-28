@@ -1,94 +1,44 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-}
-
-body {
-  background-color: #f8fafc;
-}
-
-/* Navbar container */
 .navbar {
-  background-color: #ffffff;
-  overflow: visible;
+  background-color: #fff;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
 }
 
-/* Left section */
-.left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1a365d;
-  text-decoration: none;
-}
-
-/* Center section */
-.center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  padding: 0 20px;
-}
-
-.search-bar {
-  width: 100%;
-  max-width: 500px;
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  background-color: #f8fafc;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-}
-
-.search-bar:focus {
-  outline: none;
-  border-color: #3b82f6;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-/* Right section */
+.left,
 .right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
-/* Language selector */
-.language-selector {
+.nav-link {
+  color: #333;
+  text-decoration: none;
   padding: 8px 12px;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  background-color: #ffffff;
-  color: #1a365d;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
-.language-selector:hover {
-  background-color: #f8fafc;
-  border-color: #cbd5e1;
+.nav-link:hover {
+  background-color: #f4f7fa;
 }
 
-/* Icon containers and buttons */
-.icon-container {
-  position: relative;
+.search-bar {
+  width: 300px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #e1e4e8;
+  background-color: #f4f7fa;
+}
+
+.language-selector {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #e1e4e8;
+  background-color: white;
 }
 
 .icon-button {
@@ -97,127 +47,131 @@ body {
   padding: 10px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.2rem;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: background-color 0.3s;
 }
 
 .icon-button:hover {
-  background-color: #f1f5f9;
+  background-color: #f4f7fa;
 }
 
-/* Tooltip styles */
-.tooltip {
+/* Profile Dropdown Styles */
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
   position: absolute;
-  top: calc(100% + 10px);
   right: 0;
-  width: 280px;
-  background-color: #ffffff;
+  top: 100%;
+  margin-top: 8px;
+  background: white;
   border-radius: 8px;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  padding: 16px;
-  display: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  border: 1px solid #e1e4e8;
   z-index: 1000;
-  border: 1px solid #e2e8f0;
+  animation: fadeIn 0.2s ease-in-out;
 }
 
-.icon-container:hover .tooltip {
-  display: block;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Tooltip arrow */
-.tooltip::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  right: 16px;
-  border-width: 0 8px 8px 8px;
-  border-style: solid;
-  border-color: transparent transparent #ffffff transparent;
-  filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.1));
+.profile-card {
+  padding: 16px;
 }
 
-/* Tooltip content */
-.tooltip h4 {
-  color: #1a365d;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.tooltip p {
-  color: #475569;
-  font-size: 0.95rem;
-  margin: 8px 0;
-}
-
-.tooltip ul {
-  list-style: none;
-  margin: 12px 0;
-}
-
-.tooltip li {
-  color: #475569;
-  font-size: 0.95rem;
-  padding: 8px 0;
-  border-bottom: 1px solid #f1f5f9;
+.image-container {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
-.tooltip li:last-child {
-  border-bottom: none;
+.profile-image {
+  position: relative;
+  width: 64px;
+  height: 64px;
 }
 
-/* Profile details */
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #f0f2f5;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.profile-info {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.profile-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.profile-info .phone {
+  color: #666;
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
 .profile-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
-.profile-details a {
-  color: #2563eb;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  font-size: 0.95rem;
-}
-
-.profile-details a:hover {
-  background-color: #f1f5f9;
-}
-
-/* Notification dot */
-.notification-dot {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 8px;
-  height: 8px;
-  background-color: #ef4444;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-}
-
-/* Full screen button */
-.icon-button.full-screen {
-  font-size: 1.5rem;
+.detail-item {
+  display: flex;
+  align-items: center;
   padding: 8px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
-.icon-button.full-screen:hover {
-  background-color: #f1f5f9;
+.detail-item:hover {
+  background-color: #f4f7fa;
+}
+
+.emoji {
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.detail-content {
+  flex: 1;
+}
+
+.detail-content .label {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.detail-content .value {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
 }

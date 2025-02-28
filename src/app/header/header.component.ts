@@ -1,25 +1,27 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-
+interface UserProfile {
+  name: string;
+  phone: string;
+  birthday: string;
+  gender: string;
+  imageUrl: string;
+}
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [NgIf],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  // Function to toggle full-screen mode
-  toggleFullScreen() {
-    if (!document.fullscreenElement) {
-      // Enter full screen
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      }
-    } else {
-      // Exit full screen
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
-    }
-  }
+  isProfileOpen = false;
+
+  profile: UserProfile = {
+    name: 'Preet',
+    phone: '+91 8059366488',
+    birthday: 'Aug 20, 1867',
+    gender: 'Male',
+    imageUrl: 'https://cdn-icons-png.freepik.com/512/6915/6915987.png',
+  };
 }
